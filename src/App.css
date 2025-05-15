@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes blobPulse {
+  0% {
+    transform: scale(1) translate(0px, 0px);
+  }
+  50% {
+    transform: scale(1.15) translate(15px, -10px);
+  }
+  100% {
+    transform: scale(1) translate(0px, 0px);
+  }
+}
+
+.section-rounded {
+  @apply max-w-4xl mx-auto px-6 py-8 rounded-3xl bg-gray-900 text-white shadow-lg;
+}
+
+.animate-blob {
+  animation: blobPulse 10s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Blob parent wraps all blob layers */
+.blob__parent {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Common blob styles */
+.blob {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: blobMove 15s ease-in-out infinite;
+}
+
+/* Individual color classes */
+.blob-1 { top: -50px; left: -50px; background: #7f5af0; animation-delay: 0s; }
+.blob-2 { top: 20%; right: -40px; background: #2cb67d; animation-delay: 3s; }
+.blob-3 { bottom: -60px; left: 25%; background: #f15bb5; animation-delay: 6s; }
+.blob-4 { bottom: 20%; right: 10%; background: #00f0ff; animation-delay: 9s; }
+
+@keyframes blobMove {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.1); }
+}
+
